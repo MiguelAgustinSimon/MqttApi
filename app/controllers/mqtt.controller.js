@@ -72,20 +72,24 @@ const handleIncomingMessage = (topic, message) => {
 const getTemperatureEvents = (req,res) => {
     if(temperatura.valores.length>0){
         res.status(200).json(temperatura);
+    }else{
+      res.status(200).json([]);
     }
-    res.status(200).json("No hay datos al momento.");
 }
 
 const getHumidityEvents = (req,res) => {
     if(humedad.valores.length>0){
         res.status(200).json(humedad);
     }
-    res.status(200).json("No hay datos al momento.");
+    else{
+      res.status(200).json([]);
+    }
 }
+
+getMqtt();
 
 // Exporta los controladores
 module.exports = {
-  getMqtt,
   getTemperatureEvents,
   getHumidityEvents
 };
