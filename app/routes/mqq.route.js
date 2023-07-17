@@ -5,5 +5,6 @@ const controller = require('../controllers/mqtt.controller'); // Ruta al archivo
 // Ruta para obtener todos los usuarios
 router.get('/api/getTemperatureEvents', controller.getTemperatureEvents);
 router.get('/api/getHumidityEvents', controller.getHumidityEvents);
+router.get('/api/getDistanceEvents', controller.getDistanceEvents);
 
 module.exports = router;

@@ -15,6 +15,10 @@ const humedad = {
     valores: [],
 };
 
+const distancia = {
+  valores: [],
+};
+
 const defineClient = () => {
   // Crear cliente MQTT
   const client = mqtt.connect(host, {
@@ -66,6 +70,9 @@ const handleIncomingMessage = (topic, message) => {
    if (parsedMessage.tipo === 'humedad') {
     humedad.valores.push(parsedMessage.valor);
    }
+   if (parsedMessage.tipo === 'distancia') {
+    distancia.valores.push(parsedMessage.valor);
+   }
 };
 
 
@@ -86,10 +93,20 @@ const getHumidityEvents = (req,res) => {
     }
 }
 
+const getDistanceEvents = (req,res) => {
+  if(distancia.valores.length>0){
+      res.status(200).json(distancia);
+  }
+  else{
+    res.status(200).json([]);
+  }
+}
+
 getMqtt();
 
 // Exporta los controladores
 module.exports = {
   getTemperatureEvents,
-  getHumidityEvents
+  getHumidityEvents,
+  getDistanceEvents
 };
