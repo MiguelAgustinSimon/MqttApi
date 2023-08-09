@@ -6,7 +6,6 @@ const port = 8741;
 const subscription = 'grupo2/topic_sub';
 const username = 'alumnos';
 const password = 'AccesoUAI';
-// Definir objeto temperatura con arrays correspondientes
 const temperatura = {
     valores: [],
   };
